@@ -1,0 +1,13 @@
+
+
+
+## This config file contains all the configuration of the files like file_paths, folder_path, urls
+## yaml is a human-readable language which is easy to exchange the data between the different programs
+
+artifacts_root : artifacts
+
+data_ingestion :
+  root_dir : artifacts/data_ingestion
+  source_URL : 'https://github.com/MadanuAugustin/IrisFlowerClassification_with_MLflow/raw/main/Notebook/archive%20(2).zip'
+  local_data_file : artifacts/data_ingestion/raw-data.zip
+  unzip_dir : artifacts/data_ingestion/
