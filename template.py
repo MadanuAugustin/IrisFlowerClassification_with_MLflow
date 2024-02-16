@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO, format = '[%(asctime)s] : %(message)s: '
 
 ## naming the project
 
-project_name = 'WineQualityPrediction_with_MLflow'
+project_name = 'IrisFlowerClassification'
 
 ## creating list as 'list_of_files'
 ## list_of_files is responsible for creating project folders
