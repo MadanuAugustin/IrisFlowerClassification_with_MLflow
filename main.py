@@ -3,6 +3,7 @@ from src.IrisFlowerClassification.pipeline.stage_01_data_ingestion import (DataI
 from src.IrisFlowerClassification.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
 from src.IrisFlowerClassification.pipeline.stage_03_data_transformation import DataTransformationTrainingPipeline
 from src.IrisFlowerClassification.pipeline.stage_04_model_training import ModelTrainingPipeline
+from src.IrisFlowerClassification.pipeline.stage_05_model_evaluation import ModelEvaluationTrainingPipeline
 from Exception_file.exception import CustomException
 import sys
 from Exception_file.exception import CustomException
@@ -57,5 +58,17 @@ try:
     model_trainer = ModelTrainingPipeline()
     model_trainer.main()
     logger.info(f'---------------------{STAGE_NAME} completed---------------------')
+except Exception as e:
+    raise CustomException(e, sys)
+
+
+
+STAGE_NAME = 'Model_Evaluation_Stage'
+
+try:
+    logger.info(f'-------------------------{STAGE_NAME} started------------------------')
+    model_evaluation = ModelEvaluationTrainingPipeline()
+    model_evaluation.main()
+    logger.info(f'------------------------{STAGE_NAME} completed---------------------')
 except Exception as e:
     raise CustomException(e, sys)
