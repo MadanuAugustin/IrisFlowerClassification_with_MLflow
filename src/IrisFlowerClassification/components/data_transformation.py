@@ -21,6 +21,8 @@ class DataTransformation:
         train.to_csv(os.path.join(self.config.root_dir, 'train_raw.csv'), index = False, header = True)
         test.to_csv(os.path.join(self.config.root_dir, 'test_raw.csv'), index = False, header = True)
 
+        train.drop('Id', axis= 1, inplace = True)
+
         train_X = train.drop(columns='Species', axis = 1)
 
         train_Y = train[['Species']]
@@ -37,9 +39,13 @@ class DataTransformation:
 
         train_Y = pd.DataFrame(train_Y)
 
+        train_Y.rename(columns={0 : 'Species'}, inplace=True)
+
         transformed_train = pd.concat([train_X, train_Y], axis = 1)
 
         transformed_train.to_csv(os.path.join(self.config.root_dir, 'transformed_train_data.csv'), index = False, header = True)
+
+        test.drop('Id', axis = 1, inplace = True)
 
         test_X = test.drop(columns = 'Species', axis = 1)
 
@@ -52,6 +58,8 @@ class DataTransformation:
         test_Y = le.transform(test_Y)
 
         test_Y = pd.DataFrame(test_Y)
+
+        test_Y.rename(columns={0 : 'Species'}, inplace= True)
 
         transformed_test = pd.concat([test_X, test_Y], axis = 1)
 
